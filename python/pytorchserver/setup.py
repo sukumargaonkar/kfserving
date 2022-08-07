@@ -31,7 +31,7 @@ setup(
     python_requires='>3.7',
     packages=find_packages("pytorchserver"),
     install_requires=[
-        "kserve",
+        "kserve>=0.9.0",
         "torch >= 1.3.1",
         "torchvision == 0.8.2"
     ],
