@@ -11,6 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import os
 
 from setuptools import setup, find_packages
 
@@ -19,9 +20,13 @@ tests_require = [
     'pytest-tornasync',
     'mypy'
 ]
+
+with open(os.path.join(os.getcwd(), '../VERSION')) as version_file:
+    version = version_file.read().strip()
+
 setup(
     name='pytorchserver',
-    version='0.9.0',
+    version=version,
     author_email='singhan@us.ibm.com',
     license='https://github.com/kserve/kserve/LICENSE',
     url='https://github.com/kserve/kserve/python/pytorchserver',
@@ -31,7 +36,7 @@ setup(
     python_requires='>3.7',
     packages=find_packages("pytorchserver"),
     install_requires=[
-        "kserve>=0.9.0",
+        f"kserve>={version}",
         "torch >= 1.3.1",
         "torchvision == 0.8.2"
     ],
